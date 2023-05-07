@@ -13,8 +13,6 @@ public class WeatherifyController {
     public Label popLabel;
     public Label windSpeedLabel;
 
-
-
     public void onQuitClicked(ActionEvent actionEvent) {
     }
 
