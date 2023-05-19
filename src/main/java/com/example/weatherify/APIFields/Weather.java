@@ -1,4 +1,4 @@
-package com.example.weatherify;
+package com.example.weatherify.APIFields;
 
 public class Weather {
 

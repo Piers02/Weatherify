@@ -9,4 +9,6 @@ module com.example.weatherify {
 
     opens com.example.weatherify to javafx.fxml;
     exports com.example.weatherify;
+    exports com.example.weatherify.APIFields;
+    opens com.example.weatherify.APIFields to javafx.fxml;
 }

@@ -2,6 +2,7 @@ package com.example.weatherify;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,13 +24,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class WeatherifyController {
-    public TextField tfSearch;
-    public Label avgTemperatureLabel;
-    public Label MaxTemperatureLabel;
-    public Label MinTemperatureLabel;
-    public Label humidityLabel;
-    public Label popLabel;
-    public Label windSpeedLabel;
+    @FXML public TextField tfSearch;
+    @FXML private Label avgTemperatureLabel;
+    @FXML public Label MaxTemperatureLabel;
+    @FXML public Label MinTemperatureLabel;
+    @FXML public Label humidityLabel;
+    @FXML public Label popLabel;
+    @FXML public Label windSpeedLabel;
 
 
     public void onQuitClicked() {
@@ -63,7 +64,7 @@ public class WeatherifyController {
     }
 
     public void getWeather(String city){
-        /*HttpRequest request = HttpRequest.newBuilder()
+        HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=51bc2219822a99c72600d6f370951801&lang=eng&units=metric"))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -74,12 +75,37 @@ public class WeatherifyController {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(response.body());*/
 
+        // Debug purposes
+        System.out.println(response.body());
+
+        // Works with rain/snow
+        String to_replace = response.body();
+        StringBuilder stringBuilder = new StringBuilder(to_replace);
+        if(response.body().contains("rain") || response.body().contains("snow")) {
+            stringBuilder.insert(stringBuilder.indexOf("1h"), '_');
+        }
+
+        ObjectMapper tmpobject = new ObjectMapper();
+        try {
+            JsonResponse jsonResponse2 = tmpobject.readValue(stringBuilder.toString(), JsonResponse.class);
+            System.out.println("Stop!");
+
+            int tmp = jsonResponse2.getMain().getTemp();
+            avgTemperatureLabel.setText(Integer.toString(tmp));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+        // Does not work with rain/snow
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonResponse jsonResponse = objectMapper.readValue(new URL ("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=51bc2219822a99c72600d6f370951801&lang=eng&units=metric"), JsonResponse.class);
             System.out.println("Stop!");
+            int temp = jsonResponse.getMain().getTemp();
+            avgTemperatureLabel.setText("" + temp);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

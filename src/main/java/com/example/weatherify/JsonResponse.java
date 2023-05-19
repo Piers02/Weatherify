@@ -1,5 +1,7 @@
 package com.example.weatherify;
 
+import com.example.weatherify.APIFields.*;
+
 public class JsonResponse {
 
     private Coord coord;
@@ -8,6 +10,7 @@ public class JsonResponse {
     private Main main;
     private int visibility;
     private Wind wind;
+    private Rain rain;
     private Clouds clouds;
     private int dt;
     private Sys sys;
@@ -62,6 +65,14 @@ public class JsonResponse {
 
     public void setWind(Wind wind) {
         this.wind = wind;
+    }
+
+    public Rain getRain() {
+        return rain;
+    }
+
+    public void setRain(Rain rain) {
+        this.rain = rain;
     }
 
     public Clouds getClouds() {
