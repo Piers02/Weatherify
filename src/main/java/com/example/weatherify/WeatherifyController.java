@@ -64,7 +64,10 @@ public class WeatherifyController {
 
     // Send current location to a method that searches for current weather
     public void onSearchClicked() {
-        getWeatherForecast(tfSearch.getText());
+
+        // In order to accommodate with city names that are composed by multiple string
+        // We replace the spaces with the symbol "+", in this way the API can respond correctly
+        getWeatherForecast(tfSearch.getText().replace(" ", "+"));
     }
 
     public void getWeatherForecast(String city){
