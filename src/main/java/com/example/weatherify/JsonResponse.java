@@ -11,6 +11,7 @@ public class JsonResponse {
     private int visibility;
     private Wind wind;
     private Rain rain;
+    private Snow snow;
     private Clouds clouds;
     private int dt;
     private Sys sys;
@@ -73,6 +74,14 @@ public class JsonResponse {
 
     public void setRain(Rain rain) {
         this.rain = rain;
+    }
+
+    public Snow getSnow() {
+        return snow;
+    }
+
+    public void setSnow(Snow snow) {
+        this.snow = snow;
     }
 
     public Clouds getClouds() {

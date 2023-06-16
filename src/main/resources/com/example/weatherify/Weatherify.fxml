@@ -63,6 +63,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
@@ -70,14 +71,16 @@
                           <Label text="Max Temperature" GridPane.rowIndex="1" />
                           <Label text="Min Temperature" GridPane.rowIndex="2" />
                           <Label text="Amount of rain" GridPane.rowIndex="3" />
-                          <Label text="Humidity" GridPane.rowIndex="4" />
-                          <Label text="Wind speed" GridPane.rowIndex="5" />
+                          <Label text="Humidity" GridPane.rowIndex="5" />
+                          <Label text="Wind speed" GridPane.rowIndex="6" />
                           <Label fx:id="avgTemperatureLabel" text="Label" GridPane.columnIndex="1" />
                           <Label fx:id="MaxTemperatureLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                           <Label fx:id="MinTemperatureLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                           <Label fx:id="AmountOfRainLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                          <Label fx:id="humidityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                          <Label fx:id="windSpeedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                          <Label fx:id="humidityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                          <Label fx:id="windSpeedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     <Label text="Amount of snow" GridPane.rowIndex="4" />
+                     <Label fx:id="AmountOfSnowLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                       </GridPane>
                       <ImageView fx:id="weatherIcon" fitHeight="253.0" fitWidth="302.0" layoutX="57.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
                           <Image url="@weather-icon-png-5.png" />
