@@ -1,14 +1,11 @@
 package com.example.weatherify;
 
-import com.example.weatherify.APIFields.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Objects;
 
 public class WeatherManager {
 
@@ -28,7 +25,7 @@ public class WeatherManager {
         }
 
         // Works with rain/snow
-        String to_replace = response.body();
+        String to_replace = Objects.requireNonNull(response).body();
         StringBuilder stringBuilder = new StringBuilder(to_replace);
         if (response.body().contains("rain") || response.body().contains("snow")) {
             stringBuilder.insert(stringBuilder.indexOf("1h"), '_');

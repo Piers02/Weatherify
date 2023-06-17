@@ -9,10 +9,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 public class WeatherifyController {
     @FXML public TextField tfSearch;
+    @FXML public Label CityLabel;
+    @FXML public Label SunriseLabel;
+    @FXML public Label SunsetLabel;
+    @FXML public Label currentTimeLabel;
     @FXML private Label avgTemperatureLabel;
     @FXML public Label MaxTemperatureLabel;
     @FXML public Label MinTemperatureLabel;
@@ -63,11 +70,12 @@ public class WeatherifyController {
         try {
             JsonResponse jsonResponse = objectMapper.readValue(response, JsonResponse.class);
 
+            CityLabel.setText(jsonResponse.getName() + ", " + jsonResponse.getSys().getCountry());
             avgTemperatureLabel.setText(jsonResponse.getMain().getTemp() + "°");
             MaxTemperatureLabel.setText(jsonResponse.getMain().getTemp_max() + "°");
             MinTemperatureLabel.setText(jsonResponse.getMain().getTemp_min() + "°");
             humidityLabel.setText(jsonResponse.getMain().getHumidity() + "%");
-            windSpeedLabel.setText(jsonResponse.getWind().getSpeed() + " km/h");
+            windSpeedLabel.setText(jsonResponse.getWind().getSpeed() + " m/s");
 
             if(jsonResponse.getRain() == null) {
                 AmountOfRainLabel.setText(0 + " mm");
@@ -81,6 +89,36 @@ public class WeatherifyController {
             } else {
                 AmountOfSnowLabel.setText(jsonResponse.getSnow().get_1h() + " mm");
             }
+
+            Date date = new Date(jsonResponse.getSys().getSunrise() * 1000L);
+            SimpleDateFormat jdf = new SimpleDateFormat("HH:mm");
+            int tmp = jsonResponse.getTimezone() / 3600;
+            if(tmp > 0) {
+                jdf.setTimeZone(TimeZone.getTimeZone("GMT+" + (jsonResponse.getTimezone() / 3600)));
+            }
+            else {
+                jdf.setTimeZone(TimeZone.getTimeZone("GMT" + (jsonResponse.getTimezone() / 3600)));
+            }
+            String java_date = jdf.format(date);
+            SunriseLabel.setText(java_date);
+
+            date = new Date(jsonResponse.getSys().getSunset() * 1000L);
+            java_date = jdf.format(date);
+            SunsetLabel.setText(java_date);
+
+            date = new Date(jsonResponse.getDt() * 1000L);
+            jdf = new SimpleDateFormat("dd/MM/yyyy | 'Local time:' HH:mm  z");
+            tmp = jsonResponse.getTimezone() / 3600;
+            if(tmp > 0) {
+                jdf.setTimeZone(TimeZone.getTimeZone("GMT+" + (jsonResponse.getTimezone() / 3600)));
+            }
+            else {
+                jdf.setTimeZone(TimeZone.getTimeZone("GMT" + (jsonResponse.getTimezone() / 3600)));
+            }
+            java_date = jdf.format(date);
+            currentTimeLabel.setText(java_date);
+
+
 
             weatherIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("WeatherIcons/" + jsonResponse.getWeather()[0].getIcon() + ".png"))));
 
