@@ -1,5 +1,7 @@
 package com.example.weatherify;
 
+import javafx.scene.control.Alert;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -22,6 +24,15 @@ public class WeatherManager {
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }
+
+        if(Objects.requireNonNull(response).body().contains("{\"cod\":\"404\",\"message\":\"city not found\"}")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Response error");
+            alert.setHeaderText("City not found or not existent");
+            alert.setContentText("Try again with a different city name");
+            alert.showAndWait();
+            return null;
         }
 
         // Works with rain/snow

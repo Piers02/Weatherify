@@ -66,6 +66,11 @@ public class WeatherifyController {
 
     public void ShowWeather (String response){
 
+        if(response == null) {
+            tfSearch.setText("");
+            return;
+        }
+
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonResponse jsonResponse = objectMapper.readValue(response, JsonResponse.class);
@@ -90,7 +95,6 @@ public class WeatherifyController {
                 AmountOfSnowLabel.setText(jsonResponse.getSnow().get_1h() + " mm");
             }
 
-            // Hello
             Date date = new Date(jsonResponse.getSys().getSunrise() * 1000L);
             SimpleDateFormat jdf = new SimpleDateFormat("HH:mm");
             int tmp = jsonResponse.getTimezone() / 3600;
