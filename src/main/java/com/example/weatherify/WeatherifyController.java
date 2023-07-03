@@ -3,9 +3,7 @@ package com.example.weatherify;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -20,6 +18,9 @@ public class WeatherifyController {
     @FXML public Label SunriseLabel;
     @FXML public Label SunsetLabel;
     @FXML public Label currentTimeLabel;
+    @FXML public TableView favoritesTable;
+    @FXML public TableColumn favoritesColumn;
+    @FXML public ToggleButton favoritesToggleButton;
     @FXML private Label avgTemperatureLabel;
     @FXML public Label MaxTemperatureLabel;
     @FXML public Label MinTemperatureLabel;
@@ -43,16 +44,6 @@ public class WeatherifyController {
                 Matr: 164822
                 API Used: OpenWeatherMap""");
         alert.showAndWait();
-    }
-
-    // To do
-    public void onTemperatureClicked() {
-        System.exit(0);
-    }
-
-    // To do
-    public void onPrecipitationClicked() {
-        System.exit(0);
     }
 
     // Send current location to a method that searches for current weather
@@ -122,8 +113,6 @@ public class WeatherifyController {
             }
             java_date = jdf.format(date);
             currentTimeLabel.setText(java_date);
-
-
 
             weatherIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("WeatherIcons/" + jsonResponse.getWeather()[0].getIcon() + ".png"))));
 

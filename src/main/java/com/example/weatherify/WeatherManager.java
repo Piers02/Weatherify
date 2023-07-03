@@ -1,13 +1,19 @@
 package com.example.weatherify;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 public class WeatherManager {
 
@@ -44,4 +50,5 @@ public class WeatherManager {
 
         return stringBuilder.toString();
     }
+
 }
