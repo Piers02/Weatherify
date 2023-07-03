@@ -174,7 +174,7 @@
                      <ImageView fitHeight="32.0" fitWidth="24.0" layoutX="21.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@NewIconSet/wi-sunrise.png" />
                      </ImageView>
-                     <ToggleButton fx:id="favoritesToggleButton" ellipsisString="Click to add/remove" layoutX="510.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Favorites" />
+                     <ToggleButton fx:id="favoritesToggleButton" ellipsisString="Click to add/remove" layoutX="480.0" layoutY="27.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="131.0" text="Save it!" wrapText="true" />
                   </AnchorPane>
                </SplitPane>
             </center>

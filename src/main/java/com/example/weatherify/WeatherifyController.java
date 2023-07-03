@@ -3,13 +3,24 @@ package com.example.weatherify;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.TimeZone;
 
 public class WeatherifyController {
@@ -18,9 +29,9 @@ public class WeatherifyController {
     @FXML public Label SunriseLabel;
     @FXML public Label SunsetLabel;
     @FXML public Label currentTimeLabel;
-    @FXML public TableView favoritesTable;
-    @FXML public TableColumn favoritesColumn;
-    @FXML public ToggleButton favoritesToggleButton;
+    @FXML private TableView<Cities> favoritesTable;
+    @FXML private TableColumn<Cities, String> favoritesColumn;
+    @FXML private ToggleButton favoritesToggleButton;
     @FXML private Label avgTemperatureLabel;
     @FXML public Label MaxTemperatureLabel;
     @FXML public Label MinTemperatureLabel;
@@ -30,6 +41,9 @@ public class WeatherifyController {
     @FXML public Label windSpeedLabel;
     @FXML private ImageView weatherIcon;
 
+    public void initialize() throws SQLException {
+    
+    }
 
     public void onQuitClicked() {
         System.exit(0);
