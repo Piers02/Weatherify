@@ -1,0 +1,49 @@
+{
+  "coord": {
+    "lon": 10.9,
+    "lat": 44.5
+  },
+  "weather": [
+    {
+      "id": 501,
+      "main": "Rain",
+      "description": "moderate rain",
+      "icon": "10d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 11.72,
+    "feels_like": 11.51,
+    "temp_min": 10.14,
+    "temp_max": 15.54,
+    "pressure": 1010,
+    "humidity": 98,
+    "sea_level": 1010,
+    "grnd_level": 990
+  },
+  "visibility": 126,
+  "wind": {
+    "speed": 2.16,
+    "deg": 12,
+    "gust": 4.76
+  },
+  "rain": {
+    "1h": 3.26
+  },
+  "clouds": {
+    "all": 100
+  },
+  "dt": 1683713451,
+  "sys": {
+    "type": 2,
+    "id": 2011351,
+    "country": "IT",
+    "sunrise": 1683690920,
+    "sunset": 1683743421
+  },
+  "timezone": 7200,
+  "id": 3173330,
+  "name": "Province of Modena",
+  "cod": 200
+}
