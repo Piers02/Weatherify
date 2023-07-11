@@ -14,7 +14,7 @@ The app can show all current information on the weather of a city, such as: Temp
 
 All city names must be entered in their english denomination
 
-Iy is advisable to use a country code to further specify the location
+It is advisable to use a country code to further specify the location
 
 Examples: 
 * London, UK
@@ -26,5 +26,5 @@ Project is created with:
 </br>
 * JavaFx Scene Builder
 * JavaFx
-* OpenWheaterMapAPI
+* OpenWheaterMapAPI: https://openweathermap.org/
 * IntelliJ IDEA
